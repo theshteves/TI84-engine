@@ -1,0 +1,111 @@
+ClrHome
+FnOff :AxesOff
+CoordOff
+0->Xmin
+94->Xmax
+0->Ymin
+62->Ymax
+ClrDraw
+RecallPic 7
+"ALGEBRA"->Str1
+"TRIGONOMETRY"->Str2
+"PHYSICS"->Str3
+"ABOUT"->Str4
+"EXIT"->Str5
+Text(21,3,":")
+Text(27,3,":")
+Text(33,3,":")
+Text(39,3,":")
+1->Q
+
+Lbl A
+Text(16,8,Str1)
+Text(22,8,Str2)
+Text(28,8,Str3)
+Text(34,8,Str4)
+Text(40,8,Str5)
+Text((9+6Q),3,":")
+
+For(S,2,6)
+Pt-Change(S,(51-6Q))
+Pt-Change(S,(50-6Q))
+Pt-Change(S,(49-6Q))
+Pt-Change(S,(48-6Q))
+Pt-Change(S,(47-6Q))
+End
+
+While 1
+getKey->N
+While N=0
+getKey->N
+End
+
+If N=25
+Goto UP
+If N=34
+Goto DN
+If N=105
+Goto EN
+If N!=25 or 34 or 105
+Goto A
+End
+
+
+Lbl UP
+For(T,2,6)
+Pt-Change(T,(51-6Q))
+Pt-Change(T,(50-6Q))
+Pt-Change(T,(49-6Q))
+Pt-Change(T,(48-6Q))
+Pt-Change(T,(47-6Q))
+End
+Text((9+6Q),3,":")
+Q-1->Q
+If Q=0
+5->Q
+Goto A
+Goto A
+End
+
+Lbl DN
+For(U,2,6)
+Pt-Change(U,(51-6Q))
+Pt-Change(U,(50-6Q))
+Pt-Change(U,(49-6Q))
+Pt-Change(U,(48-6Q))
+Pt-Change(U,(47-6Q))
+End
+Text((9+6Q),3,":")
+Q+1->Q
+If Q=6
+1->Q
+Goto A
+Goto A
+End
+
+
+Lbl EN
+If Q=1:Then
+ZStandard
+AxesOn:CoordOn
+prgmZA:Else
+If Q=2:Then
+ZStandard
+AxesOn:CoordOn
+prgmZB:Else
+If Q=3:Then
+ZStandard
+AxesOn:CoordOn
+prgmZC:Else
+If Q=4:Then
+ClrDraw
+
+Pause 
+Goto EX:Else
+Lbl EX
+ZStandard
+CoordOn
+AxesOn:FnOn 
+ClrDraw
+Output(1,1,"")
+Stop
