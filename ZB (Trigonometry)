@@ -1,0 +1,189 @@
+ClrDraw:FnOn 
+ClrHome
+Lbl BA
+Menu("  TRIGONOMETRY  ","CONVERT ANGLE",2,"FUNCTIONS",3,"IDENTITIES",G,"UNIT CIRCLE",U,"[EXIT]",EX)
+
+
+Lbl 2
+Menu("  ANGLE GIVEN:  ","Degree",X,"Radian",Y,"REVOLUTIONS",Z)
+Lbl X
+Output(1,4,"...(degree)")
+Input "(theta)=",(theta)
+(theta)((theta)/180)->R
+(theta)/360->V
+Disp "::::::::::::::::"
+Disp "Radian:"
+Disp R
+Disp "::::::::::::::::"
+Disp "REVOLUTIONS:"
+Disp V
+Output(3,15,"(pi)r")
+Output(3,9,"......")
+R/(pi)->R
+round(R,3)->R
+Output(3,8,R)
+Goto EX
+Lbl Y
+Output(1,8,"......r")
+Input "Radian=",R
+R(180/(pi))->(theta)
+((theta)/360)->V
+Disp R
+Disp "::::::::::::::::"
+Disp "Degree:"
+Output(4,13,"(degree)
+Output(4,8,(theta))
+Disp "::::::::::::::::"
+Disp "REVOLUTIONS:":Disp V
+Goto EX
+Lbl Z
+Input "REVOLUTIONS=",V
+V360->Á
+2(pi)V->R
+Disp "::::::::::::::::"
+Disp "Degree:"
+Output(3,10,"...(degree)")
+Output(3,8,(theta))
+Disp "::::::::::::::::"
+Disp "Radian:"
+Disp R
+(R/(pi))->R
+round(R,3)->R
+Output(5,9,"......(pi)r")
+Output(5,8,R)
+Goto EX
+
+
+Lbl 3
+1->Q
+Menu("  ANGLE GIVEN:  ","Degree",Z,"Radian",4,"[BACK]",BA)
+Lbl 4
+0->Q
+Lbl Z
+Degree
+Output(2,3,"......(degree)")
+Menu(" TRIG FUNCTIONS ","SIN((theta))=OPP/HYP",A,"COS((theta))=ADJ/HYP",B,"TAN((theta))=OPP/ADJ",C,"CSC((theta))=HYP/OPP",D,"SEC((theta))=HYP/ADJ",E,"COT((theta))=ADJ/OPP",F,"[BACK]",BA)
+Lbl A
+Disp "sin((theta))=Y/R=OP/HY"
+Input "(theta)=",(theta)
+If Q=0:Then
+Output(2,9,"r"
+((theta)(180/(pi)))->(theta)
+(sin((theta)))üN
+Goto AN:Else
+(sin((theta)))->N
+Goto AN
+Lbl B
+Disp "cos((theta))=X/R=AD/HY"
+Input "(theta)=",(theta)
+If Q=0:Then
+Output(2,9,"r"
+((theta)(180/(theta)))->(theta)
+(cos((theta)))->N
+Goto AN:Else
+(cos((theta)))->N
+Goto AN
+Lbl C
+Disp "tan((theta))=Y/X=OP/AD"
+Input "(theta)=",(theta)
+If Q=0:Then
+Output(2,9,"r"
+((theta)(180/(theta)))->(theta)
+(tan((theta)))->N
+Goto AN:Else
+(tan((theta)))->N
+Goto AN
+Lbl D
+Disp "CSC((theta))=R/Y=HY/OP"
+Input "(theta)=",(theta)
+If Q=0:Then
+Output(2,9,"r"
+((theta)(180/(theta)))->(theta)
+If sin((theta))=0
+Then:Output(4,3,"[UNDEFINED]")
+Goto UN:Else
+(1/(sin((theta))))->N
+Goto AN:Else
+If sin((theta))=0
+Then:Output(4,3,"[UNDEFINED]")
+Goto UN:Else
+(1/(sin((theta))))->N
+Goto AN
+Lbl E
+Disp "SEC((theta))=R/X=HY/AD"
+Input "(theta)=",(theta)
+If Q=0:Then
+Output(2,9,"r"
+((theta)(180/(theta)))->Á
+If cos((theta))=0
+Then:Output(4,3,"[UNDEFINED]"
+Goto UN:Else
+(1/(cos((theta))))->N
+Goto AN:Else
+If cos((theta))=0
+Then:Output(4,3,"[UNDEFINED]")
+Goto UN:Else
+(1/(cos((theta))))->N
+Goto AN
+Lbl F
+Disp "COT((theta))=X/Y=AD/OP"
+Input "(theta)=",(theta)
+If Q=0:Then
+Output(2,9,"r"
+((theta)(180/(theta)))->(theta)
+If tan((theta))=0
+Then:Output(4,3,"[UNDEFINED]"
+Goto UN:Else
+(1/(tan((theta))))->N
+Goto AN:Else
+If tan((theta))=0
+Then:Output(4,3,"[UNDEFINED]"
+Goto UN:Else
+(1/(tan((theta))))->N
+Lbl AN
+Output(4,1,N)
+Lbl UN
+Output(3,1,"::::::::::::::::")
+Disp "":Disp "":Radian
+Goto EX
+
+
+Lbl G
+Disp "[SIN(squared)(theta)+COS(squared)(theta)=1]"
+Disp "[TAN(squared)(theta)+1=SEC(squared)(theta)]"
+Disp "[1+COT(squared)(theta)=CSC(squared)(theta)]"
+Disp "================"
+Disp ""
+Disp "  {PRESS ENTER}"
+Pause 
+Goto EX
+
+
+Lbl U
+AxesOff:CoordOff:FnOff 
+Circle(0,0,7.5)
+Line(0,-9,0,9)
+Line(-9,0,9,0)
+Text(1,1,"(-,+)")
+Text(1,77,"(+,+)")
+Text(56,1,"(-,-)")
+Text(56,77,"(+,-)")
+Text(56,24,"{PRESS ENTER}")
+Pause :ClrDraw
+Circle(-11,-11,12.5)
+Line(-10,-10,6.5,6.5)
+Line(-10,-10,2,-5)
+Line(-10,-10,-5,2)
+Text(43,52,"(root(3)/2,1/2)")
+Text(19,2,"(1/2,root(3)/2)"
+Text(3,40,"(root(2)/2,root(2)/2)")
+Text(11,1,"{PRESS ENTER}")
+Pause 
+ClrDraw
+AxesOn:CoordOn
+FnOn 
+
+
+Lbl EX
+Output(1,1,"")
+Stop
