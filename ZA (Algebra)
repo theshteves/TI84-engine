@@ -1,0 +1,326 @@
+ClrDraw:FnOn 
+ClrHome
+Lbl BA
+Menu("    ALGEBRA     ","LINEAR",1,"QUADRATIC",2,"CUBIC",3,"PRIME NUMBERS",PR,"[EXIT]",EX)
+
+
+Lbl 1
+Menu("     LINEAR     ","MIDPOINT",4,"2 POINTS",5,"POINT + M",6,"POINT +M(PERP)",7,"(PERP)BISECTOR",8,"[BACK]",BA)
+Lbl 4
+Disp " (  X' ,  Y' )"
+Disp " (  X2 ,  Y2 )"
+Disp "^^^^^^^^^^^^^^^^"
+Input "X'=",A
+Input "Y'=",B
+Input "X2=",C
+Input "Y2=",D
+((A+C)/2)->E
+((B+D)/2)->F
+round(A,2)->A
+round(B,2)->B
+round(C,2)->C
+round(D,2)->D
+round(E,2)->E
+round(F,2)->F
+ClrHome
+Disp " (      ,      )"
+Disp " (      ,      )"
+Disp "^^^^^^^^^^^^^^^^"
+Disp "^^^^^^^^^^^^^^^^"
+Disp "MIDPOINT:"
+Disp " (      ,      )"
+Output(1,3,A)
+Output(1,10,B)
+Output(2,3,C)
+Output(2,10,D)
+Output(6,3,E)
+Output(6,10,F)
+Goto EX
+Lbl 5
+Disp " (  X'  ,  Y'  )"
+Disp " (  X2  ,  Y2  )"
+Disp "^^^^^^^^^^^^^^^^"
+Input "X'=",A
+Input "Y'=",B
+Input "X2=",C
+Input "Y2=",D
+((D-B)/(C-A))->E:(B-EA)->G
+round(A,2)->A
+round(B,2)->B
+round(C,2)->C
+round(D,2)->D
+round(E,4)->E
+round(G,4)->G
+ClrHome
+Output(1,3,A)
+Output(1,10,B)
+Disp " (      ,      )"
+Lbl M1
+Disp " (      ,      )"
+Disp "^^^^^^^^^^^^^^^^"
+Disp "Y=(        )X..."
+Disp "  ...+(        )"
+Output(2,3,C)
+Output(2,10,D)
+Output(4,4,E)
+Output(5,8,G)
+Goto EX
+Lbl 6
+Disp "M = ?"
+Disp " (   X  ,   Y  )"
+Disp "^^^^^^^^^^^^^^^^"
+Input "M=",E
+Lbl M2
+Input "X=",C
+Input "Y=",D
+Lbl M3
+(D-EC)->G
+round(E,4)
+round(G,4)
+ClrHome
+Disp "M = (        )"
+Output(1,6,E)
+Goto M1
+Lbl 7
+Disp "M = ?"
+Disp " (      ,      )"
+Disp "^^^^^^^^^^^^^^^^"
+Input "M(PERP)=",E
+(-(1/E))->E
+Goto M2
+Lbl 8
+Disp " (  X'  ,  Y'  )"
+Disp " (  X2  ,  Y2  )"
+Disp "^^^^^^^^^^^^^^^^"
+Input "X'=",M
+Input "Y'=",N
+Input "X2=",O
+Input "Y2=",P
+((O+M)/2)->C
+((N+P)/2)->D
+(P-N)/(O-M)->E
+(-(1/E))->E
+Goto M3
+
+
+Lbl 2
+Menu("   QUADRATIC    ","QUAD. FORMULA",A,"FACTORING",B,"COMPLETE SQ.RE",C,"DISCRIMINANT",D,">(VERTEX FORM)",E,"[BACK]",BA)
+
+
+Lbl A
+a+bi
+Disp "[ AX(squared)+BX+C = 0 ]"
+Input "A= ",A
+Input "B= ",B
+Input "C= ",C
+(-B+root(B(squared)-4AC))/(2A)->D
+(-B-root(B(squared)-4AC))/(2A)->E
+Disp "ROOTS:...",D,E
+Goto EX
+Lbl B
+1->D:1->F
+Disp "[ AX(squared)+BX+C = 0 ]"
+Input "A=",A
+Input "B=",B
+Input "C=",C
+Disp "^^^^^^^^^^^^^^^^"
+Disp "^^^^^^^^^^^^^^^^"
+Lbl 1Q
+(A/D)->E
+(C/F)->G
+If E!=round(E,0
+Then:(D+1)->D
+Goto 1Q
+End
+If G!=round(G,0
+Then:1->D
+(F+1)->F
+Goto 1Q
+End
+If (DG+FE)=B
+Then:Goto Z
+Else:(D+1)->D
+End
+If D>abs(A)
+Then:(-D)->D
+(D+1)->D:End
+If D=0:Then
+1->D:(F+1)->F
+End
+If F>abs(C)
+Then:(-F)->F
+(F+1)->F:End
+If F=0:Then:Disp "[NOT FACTORABLE]":Goto EX
+Else
+Goto 1Q
+End
+Lbl Z
+Output(7,1,"(  X+  )(  X+  )"
+If D>1 and E<1
+Then
+(-D)->D
+(-E)->E
+(-F)->F
+(-G)->G
+End
+Output(7,2,D)
+Output(7,6,F)
+Output(7,10,E)
+Output(7,14,G)
+Goto EX
+Lbl C
+Disp "[  X(squared)+BX+C = 0 ]"
+Input "B=",B
+Input "C=",C
+(-C)->C
+(B/2)(squared)->D
+(B/2)->E
+(C+D)->I
+2->S
+round(D,1)->D
+ClrHome
+Disp "[X(squared)+   X =  C  ]"
+Disp "::::::::::::::::"
+Disp "[X(squared)+   X+D =..."
+Disp "      ...=C +D ]"
+Disp "[(X+E )(squared) =  I  ]"
+Disp "[X+E =(+-)root(I )]"
+Disp "[X= E (+-)root(I )]"
+If B<0:Then
+S-1->S:Goto M
+Else
+Lbl M
+If abs(B)>=10
+Then:S-1->S
+Goto N:Else
+Lbl N
+Output(1,(5+S),B)
+Output(1,13,C)
+Output(3,(5+S),B)
+Output(3,10,D)
+Output(4,11,C)
+Output(4,14,D)
+Output(5,5,E)
+Output(5,13,I)
+Output(6,4,E)
+Output(6,13,I)
+Output(7,5,-E)
+Output(7,13,I)
+Goto EX
+Lbl D
+Disp "[ AX(squared)+BX+C = 0 ]"
+Disp "DISCRIMINANT:"
+Disp "        [B(squared)-4AC]"
+Input "A=",A
+Input "B=",B
+Input "C=",C
+(B(squared)-4AC)->D
+ClrHome
+Disp "[ AX(squared)+BX+C = 0 ]"
+Disp "DISCRIMINANT:"
+If D>0:Then
+Disp "   [B(squared)-4AC]>0":Disp ""
+Disp "   :TWO REAL:"
+Disp "    :ROOTS:"
+Goto EX
+Else
+If D=0:Then
+Disp "   [B(squared)-4AC]=0":Disp ""
+Disp "   :ONE REAL:"
+Disp ":(DOUBLE) ROOT:"
+Goto EX
+Else
+Disp "   [B(squared)-4AC]<0":Disp ""
+Disp "   :NO REAL:"
+Disp "    :ROOTS:"
+Goto EX
+Lbl E
+Disp "[ AX(squared)+BX+C = 0 ]"
+Input "A=",A
+Input "B=",B
+Input "C=",C
+((B)/(2A))->H
+C-(B(squared)/(4A))->K
+round(H,3)->H
+round(K,2)->K
+Disp "^^^^^^^^^^^^^^^^"
+Disp "Y=   (X+(    ))Ü"
+Disp "     ...+(     )"
+Output(6,3,A)
+Output(6,10,H)
+Output(7,11,K)
+Goto EX
+
+
+Lbl 3
+a+bà
+Disp "AX(cubed)+BX(squared)+CX+D = 0"
+Input "A=",A
+Input "B=",B
+Input "C=",C
+Input "D=",D
+(2B(cubed)-9ABC+27A(squared)D)->F
+(4(B(squared)-3AC)(cubed))->E
+root(F(squared)-E)->G
+(1+root(-3))/(6A)->H
+(1-root(-3))/(6A)->I
+(-B-cuberoot(.5(F+G))-cuberoot(.5(F-G)))/(3A)->Z
+(-B/(3A)+Hcuberoot(.5(F+G))+Icuberoot(.5(F-G)))->Y
+(-B/(3A)+Icuberoot(.5(F+G))+Hcuberoot(.5(F-G)))->W
+Disp "X'=",Z
+Disp "X2=",Y
+Disp "X2=",W
+Goto EX
+
+
+Lbl PR
+Disp "PRIME CHECKER"
+Disp "^^^^^^^^^^^^^^^^"
+Disp "^^^^^^^^^^^^^^^^"
+Disp "ENTER INTEGER:"
+Input "N=",N
+(abs(N))->N
+
+If N<2:Then
+Goto ER:Else
+If N=2:Then
+Goto YE:Else
+
+N->dim((list)PRIM)
+For(V,2,N)
+1->(list)PRIM(V)
+End
+
+For(P,2,N)
+2->Q
+While (QP)<=N
+0->(list)PRIM(QP)
+(Q+1)->Q
+End
+End
+
+If (list)PRIM(N)=0
+Then:Goto NO
+Else
+
+Lbl YE
+Disp "     [PRIME]"
+Goto EX
+Lbl NO
+Disp "   [NOT PRIME]"
+Goto EX
+
+Lbl ER
+ClrHome
+Disp "ERROR:"
+Disp "::::::::::::::::"
+Disp "ENTER AN INTEGER"
+Disp "::::::::::::::::"
+Disp "NOTE:  [N>=2]"
+Disp ""
+Disp "  {PRESS ENTER}"
+Pause 
+Goto PR
+Lbl EX
+Output(1,1,"")
+Stop
